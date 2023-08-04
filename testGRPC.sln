@@ -7,6 +7,16 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Client", "Client\Client.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Server", "Server\Server.vcxproj", "{870A02BA-0199-4765-B7B3-C644DF035751}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5AF8FAF2-F324-4BE9-BC23-F3911C2CDA26}"
+	ProjectSection(SolutionItems) = preProject
+		commands.grpc.pb.cc = commands.grpc.pb.cc
+		commands.grpc.pb.h = commands.grpc.pb.h
+		commands.pb.cc = commands.pb.cc
+		commands.pb.h = commands.pb.h
+		commands.proto = commands.proto
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

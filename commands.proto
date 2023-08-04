@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package grpcdemo;
+
+service CommandService {
+    // Define a remote procedure call (RPC) named "ExecuteCommand".
+    // It takes a CommandRequest and returns a CommandResponse.
+    rpc ExecuteCommand(CommandRequest) returns (CommandResponse);
+}
+
+message CommandRequest {
+    // Define a string field named "command" with field number 1.
+    // This field represents the command to be executed.
+    string command = 1;
+    // Define a string field named "parameter" with field number 2.
+    // This field represents an optional parameter associated with the command.
+    string parameter = 2;
+}
+
+message CommandResponse {
+    // Define a string field named "result" with field number 1.
+    // This field contains the result of the executed command.
+    string result = 1;
+}

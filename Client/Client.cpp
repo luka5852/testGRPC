@@ -1,20 +1,59 @@
-// Client.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
+/*
+    IMPLEMENTATION DONE BY LUKA RADUNOVIC
+*/
 #include <iostream>
+#include <memory>
+#include <grpcpp/grpcpp.h>
+#include "../commands.grpc.pb.h"
 
-int main()
-{
-    std::cout << "Hello World!\n";
+using grpcdemo::CommandRequest;
+using grpcdemo::CommandResponse;
+using grpcdemo::CommandService;
+using grpc::Channel;
+using grpc::ClientContext;
+using grpc::Status;
+
+class CommandClient {
+public:
+    CommandClient(std::shared_ptr<Channel> channel) : stub_(CommandService::NewStub(channel)) {}
+
+    std::string ExecuteCommand(const std::string& command, const std::string& parameter) {
+        CommandRequest request;
+        request.set_command(command);
+        request.set_parameter(parameter);
+
+        CommandResponse response;
+        ClientContext context;
+
+        Status status = stub_->ExecuteCommand(&context, request, &response);
+
+        if (status.ok()) {
+            return response.result();
+        }
+        else {
+            return "RPC failed.";
+        }
+    }
+
+private:
+    std::unique_ptr<CommandService::Stub> stub_;
+};
+
+
+/*
+* For the sake of testing, this simple procedure for command execution was used:
+* 1. Sending pure hello command from the console app
+* 2. Seding command with parameter for print [x] from console app
+*/
+int main() {
+    //First by first, client is made with credentials on port 50051
+    CommandClient client(grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials()));
+
+    std::cout << "Sending 'hello' command." << std::endl;
+    client.ExecuteCommand("hello", "");
+
+    std::cout << "Sending 'print' command with parameter 'Hello, gRPC!'" << std::endl;
+    client.ExecuteCommand("print", "Hello, gRPC!"); // "Hello, gRPC!"is seen here as parameter x
+
+    return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
