@@ -9,12 +9,29 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Server", "Server\Server.vcx
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5AF8FAF2-F324-4BE9-BC23-F3911C2CDA26}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		commands.grpc.pb.cc = commands.grpc.pb.cc
 		commands.grpc.pb.h = commands.grpc.pb.h
 		commands.pb.cc = commands.pb.cc
 		commands.pb.h = commands.pb.h
 		commands.proto = commands.proto
 		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReleaseManual", "ReleaseManual", "{56E6891A-029F-482F-B5C3-26ABDEF7A1D5}"
+	ProjectSection(SolutionItems) = preProject
+		x64\Release\abseil_dll.dll = x64\Release\abseil_dll.dll
+		x64\Release\cares.dll = x64\Release\cares.dll
+		x64\Release\Client.exe = x64\Release\Client.exe
+		x64\Release\Client.pdb = x64\Release\Client.pdb
+		x64\Release\libcrypto-3-x64.dll = x64\Release\libcrypto-3-x64.dll
+		x64\Release\libprotobuf-lite.dll = x64\Release\libprotobuf-lite.dll
+		x64\Release\libprotobuf.dll = x64\Release\libprotobuf.dll
+		x64\Release\libssl-3-x64.dll = x64\Release\libssl-3-x64.dll
+		x64\Release\re2.dll = x64\Release\re2.dll
+		x64\Release\Server.exe = x64\Release\Server.exe
+		x64\Release\Server.pdb = x64\Release\Server.pdb
+		x64\Release\zlib1.dll = x64\Release\zlib1.dll
 	EndProjectSection
 EndProject
 Global
@@ -44,6 +61,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{56E6891A-029F-482F-B5C3-26ABDEF7A1D5} = {5AF8FAF2-F324-4BE9-BC23-F3911C2CDA26}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E4B8033A-AB8C-4CCF-B532-C7155A774DBF}
